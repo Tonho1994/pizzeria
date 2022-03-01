@@ -6,6 +6,7 @@
         @foreach ($pizzas as $key => $pizza)
             <pizza-component
                 :pizza="{{ $pizza }}"
+                route-pedido="{{ route('pedidos.create') }}"
             ></pizza-component>
         @endforeach
     </div>

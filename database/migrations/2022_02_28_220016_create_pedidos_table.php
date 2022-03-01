@@ -15,6 +15,7 @@ class CreatePedidosTable extends Migration
     {
         Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
+            $table->string('address');
             $table->decimal('quantity', $precision = 7, $scale = 2);
             $table->decimal('total', $precision = 8, $scale = 2);
             $table->foreignId('user_id')->constrained();

@@ -48,7 +48,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('pedidos.index') }}">{{ __('Order') }}</a>
+                            <a class="nav-link" href="{{ route('pedidos.create') }}">{{ __('Order') }}</a>
                         </li>
                     </ul>
                     <!-- Right Side Of Navbar -->

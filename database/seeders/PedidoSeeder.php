@@ -17,6 +17,7 @@ class PedidoSeeder extends Seeder
         //
         $pedido= Pedido::create([
             'id' => 1,
+            'address' => 'Calle imaginaria #1 col inexistente CDMX, Iztacalco CP 00000',
             'quantity' => 465,
             'total' => (465*.21)+465,
             'user_id' => 1

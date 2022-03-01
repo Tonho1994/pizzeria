@@ -4,10 +4,16 @@
 <div class="container">
     <div class="row">
         <div class="col-8 mx-auto">
-            <form class="row g-3">
+            <form class="row g-3" method="POST" action="{{ route('pizza.confirm') }}" enctype="multipart/form-data" novalidate>
+                @csrf
                 <div class="col-12">
                     <label for="name" class="form-label">{{ __('Confirm your name') }}</label>
-                    <input type="text" class="form-control" id="name" placeholder="{{ $user->name }}">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="{{ $user->name }}">
+                    @error('name')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="col-md-6">
                     <label for="email" class="form-label">{{ __('Confirm your Email Address') }}</label>

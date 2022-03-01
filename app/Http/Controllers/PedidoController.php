@@ -19,8 +19,6 @@ class PedidoController extends Controller
     public function index()
     {
         //
-        $user = auth()->user();
-        return view('orden.index',compact('user'));
     }
 
     /**
@@ -31,6 +29,8 @@ class PedidoController extends Controller
     public function create()
     {
         //
+        $user = auth()->user();
+        return view('orden.index',compact('user'));
     }
 
     /**
@@ -87,5 +87,14 @@ class PedidoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function confirm(Request $request){
+        dd($request->all());
+        //return view('orden.index',compact('user'));
+        $data = $request->validate([
+            'name' => 'required|min:6'
+        ]);
+        return view('orden.confirm');
     }
 }
