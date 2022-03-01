@@ -8,7 +8,7 @@
                     <p class="card-text">{{ pizza.ingredients }}.</p>
                     <p class="card-text"><small class="text-muted">${{ pizza.price }}</small></p>
                     <div class="d-grid gap-2">
-                        <a class="btn btn-primary" :href="routePedido" role="button">
+                        <a class="btn btn-primary text-white" :href="routePedido" role="button">
                             Ordenar
                         </a>
                     </div>

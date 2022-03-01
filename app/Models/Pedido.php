@@ -8,15 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     use HasFactory;
+    protected $fillable =  [
+        'address',
+        'quantity',
+        'total',
+        'user_id'
+    ];
 
     //Relaciones
+    //muchos a uno
     public function users()
     {
-        return $this->belongsToMany(User::class, 'pedidos_por_usuario');
+        return $this->belongsTo(User::class, 'user_id','id');
     }
 
-    public function pizzas()
-    {
-        return $this->belongsToMany(Pizza::class, 'pizzas_por_pedido');
-    }
 }

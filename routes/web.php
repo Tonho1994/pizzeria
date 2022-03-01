@@ -20,4 +20,4 @@ Route::post('pedidos/confirm', [App\Http\Controllers\PedidoController::class, 'c
 
 Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

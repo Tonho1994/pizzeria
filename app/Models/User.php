@@ -43,8 +43,9 @@ class User extends Authenticatable
     ];
 
     //Relaciones
-    public function users()
+    //1 a muchos con pedidos
+    public function pedidos()
     {
-        return $this->belongsToMany(Pedido::class, 'pedidos_por_usuario');
+        return $this->hasMany(Pedido::class, 'user_id');
     }
 }

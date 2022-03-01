@@ -11,11 +11,4 @@ class Pizza extends Model
     public $timestamps = false;
     protected $guarded = ['*'];
     protected $primaryKey = 'id';
-
-
-    //Relaciones
-    public function pedidos()
-    {
-        return $this->belongsToMany(Pedidos::class, 'pizzas_por_pedido');
-    }
 }

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Http\Request;
 use App\Models\Pizza;
+use App\Models\Pedido;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PedidoController extends Controller
 {
@@ -31,7 +33,7 @@ class PedidoController extends Controller
     {
         //
         $user = auth()->user();
-        return view('orden.index',compact('user'));
+        return view('orden.create',compact('user'));
     }
 
     /**
@@ -43,6 +45,20 @@ class PedidoController extends Controller
     public function store(Request $request)
     {
         //
+        try {
+            $pedido = Pedido::create([
+                'address' => $request->address,
+                'quantity' => $request->quantity,
+                'total' => $request->total,
+                'user_id' => auth()->user()->id,
+            ]);
+            Log::info(__METHOD__.' Ha sido creado un pedido por el usuario'.auth()->user()->name);
+            return response()->json('Pedido Realizado', 200);
+        } catch (\Throwable $th) {
+            Log::warning(__METHOD__."--->Line:".$th->getLine()."----->".$th->getMessage());
+            return response()->json('Error', 400);
+        }
+
     }
 
     /**

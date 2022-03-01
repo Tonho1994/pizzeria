@@ -8,7 +8,7 @@
                 @csrf
                 <div class="col-12">
                     <label for="name" class="form-label">{{ __('Confirm your name') }}</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="{{ $user->name }}">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $user->name }}" placeholder="{{ $user->name }}">
                     @error('name')
                         <span class="invalid-feedback d-block" role="alert">
                             <strong>{{$message}}</strong>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="email" class="form-label">{{ __('Confirm your Email Address') }}</label>
-                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="{{ $user->email }}">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ $user->email }}" placeholder="{{ $user->email }}">
                     @error('email')
                         <span class="invalid-feedback d-block" role="alert">
                             <strong>{{$message}}</strong>
@@ -27,7 +27,7 @@
                 <div class="col-12">
                     <label for="address" class="form-label">{{ __('Address') }}</label>
                     <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address"
-                        placeholder="{{ __('Main Street #12 Sate California C.P. 00000') }}">
+                        placeholder="{{ __('Main Street #12 Sate California C.P. 00000') }}" value="{{ old('address') }}">
                         @error('address')
                             <span class="invalid-feedback d-block" role="alert">
                                 <strong>{{$message}}</strong>
@@ -56,7 +56,7 @@
                 @endforeach
 
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary">{{ __('Order') }}</button>
+                    <button type="submit" class="btn btn-primary text-white">{{ __('Order') }}</button>
                 </div>
             </form>
         </div>
