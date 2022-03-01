@@ -8,6 +8,7 @@ https://github.com/Tonho1994/pizzeria.git
 Se debe descomentar el archivo app/providers/AppServiceProvider en:
 - linea 5 (use App\Models\Pizza;)
 - linea 29 (View::share('pizzas', Pizza::all());)
+
 despues de correr las migraciones y los seeders, ya que estas funciones envian cierta informacion a todas las vistas y son necesarias
 
 Gracias por su tiempo, Buen día.

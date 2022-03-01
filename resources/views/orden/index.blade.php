@@ -39,7 +39,8 @@
                     <div class="col-md-4">
                         <label for="{{ $pizza->name }}" class="form-label">{{ $pizza->name }} </label>
                         <select id="{{ $pizza->name }}" name="{{ $pizza->name }}" class="form-select @error("{{ $pizza->name }}") is-invalid @enderror">
-                            <option selected value="0">{{ __('Quantity...') }}</option>
+                            <option selected value="">{{ __('Quantity...') }}</option>
+                            <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>

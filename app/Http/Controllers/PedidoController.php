@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use App\Models\Pizza;
 
 class PedidoController extends Controller
 {
@@ -91,26 +92,29 @@ class PedidoController extends Controller
 
     public function confirm(Request $request){
 
-        //return view('orden.index',compact('user'));
-
         $data = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'address' => 'required',
+            'Hawaiana' => 'required',
+            'Mexicana' => 'required',
+            'CuatroQuesos' => 'required',
+            'Margarita' => 'required',
         ]);
-
         //dd($data);
-        dd($request->all());
-        if($request->Hawaiana==0 && $request->Mexicana==0 && $request->Quesos==0 && $request->Hawaiana==0){
-            //return response()->view('Esa Subcategor&iacute;a no existe.', 400);
-
+        if($request->Hawaiana==0 && $request->Mexicana==0 && $request->CuatroQuesos==0 && $request->Margarita==0){
+            //como regreso un mensaje de error??? es por que no se eligio al menos una pizza
             return redirect()->route('pedidos.create');
-
         }
         else{
-            dd('hay jawaiana');
+            $data=$request->all();
+            //dd($data);
+            $hawaiana=Pizza::select('price')->where('name','Hawaiana')->first();
+            $mexicana=Pizza::select('price')->where('name','Mexicana')->first();
+            $quesos=Pizza::select('price')->where('name','CuatroQuesos')->first();
+            $margarita=Pizza::select('price')->where('name','Margarita')->first();
+            $total=(($data['Hawaiana']*$hawaiana->price)+($data['Mexicana']*$mexicana->price)+($data['CuatroQuesos']*$quesos->price)+($data['Margarita']*$margarita->price));
+            return view('orden.confirm',compact('data','total'));
         }
-        dd($request->all());
-        return view('orden.confirm');
     }
 }
