@@ -27,6 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="{{ asset('img/icons/favicon.ico') }}" alt="" width="30" height="24" class="d-inline-block align-text-top">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -45,6 +46,9 @@
                                     <li><a class="dropdown-item" href="{{ route('pizza.show',['id'=>$pizza->id]) }}">{{ $pizza->name }}</a></li>
                                 @endforeach
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('pedidos.index') }}">{{ __('Order') }}</a>
                         </li>
                     </ul>
                     <!-- Right Side Of Navbar -->
@@ -87,6 +91,16 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        {{-- <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <div class="col">
+                    <p class="text-end navbar-text">
+                        Contacto: 55 2356 3456
+                    </p>
+                </div>
+            </div>
+        </nav> --}}
     </div>
 </body>
 </html>

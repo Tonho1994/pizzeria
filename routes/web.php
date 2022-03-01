@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/', [App\Http\Controllers\InicioController::class, '__invoke'])->name('inicio');
+Route::view('/', 'welcome')->name('inicio');
 Route::get('pizza/{id}', [App\Http\Controllers\PizzaController::class, '__invoke'])->name('pizza.show');
+Route::resource('pedidos', App\Http\Controllers\PedidoController::class);
 
 Auth::routes();
 

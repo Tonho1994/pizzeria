@@ -17,6 +17,6 @@ class PizzaController extends Controller
     {
         //
         $pizza = Pizza::find($id);
-        return view('pizza',compact('pizza'));
+        return view('pizza.index',compact('pizza'));
     }
 }
