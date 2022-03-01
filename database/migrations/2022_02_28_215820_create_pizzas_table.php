@@ -17,6 +17,7 @@ class CreatePizzasTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('ingredients');
+            $table->string('foto');
             $table->decimal('price', $precision = 5, $scale = 2);
         });
     }

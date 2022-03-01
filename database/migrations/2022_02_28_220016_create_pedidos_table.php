@@ -17,6 +17,7 @@ class CreatePedidosTable extends Migration
             $table->id();
             $table->decimal('quantity', $precision = 7, $scale = 2);
             $table->decimal('total', $precision = 8, $scale = 2);
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
