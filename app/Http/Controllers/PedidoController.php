@@ -90,11 +90,27 @@ class PedidoController extends Controller
     }
 
     public function confirm(Request $request){
-        dd($request->all());
+
         //return view('orden.index',compact('user'));
+
         $data = $request->validate([
-            'name' => 'required|min:6'
+            'name' => 'required',
+            'email' => 'required|email',
+            'address' => 'required',
         ]);
+
+        //dd($data);
+        dd($request->all());
+        if($request->Hawaiana==0 && $request->Mexicana==0 && $request->Quesos==0 && $request->Hawaiana==0){
+            //return response()->view('Esa Subcategor&iacute;a no existe.', 400);
+
+            return redirect()->route('pedidos.create');
+
+        }
+        else{
+            dd('hay jawaiana');
+        }
+        dd($request->all());
         return view('orden.confirm');
     }
 }

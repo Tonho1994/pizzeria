@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome')->name('inicio');
 Route::get('pizza/{id}', [App\Http\Controllers\PizzaController::class, '__invoke'])->name('pizza.show');
 Route::resource('pedidos', App\Http\Controllers\PedidoController::class);
-Route::get('pedidos', [App\Http\Controllers\PedidoController::class, 'confirm'])->name('pizza.confirm');
+Route::post('pedidos/confirm', [App\Http\Controllers\PedidoController::class, 'confirm'])->name('pedidos.confirm');
 
 Auth::routes();
 

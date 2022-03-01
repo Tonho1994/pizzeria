@@ -4,11 +4,11 @@
 <div class="container">
     <div class="row">
         <div class="col-8 mx-auto">
-            <form class="row g-3" method="POST" action="{{ route('pizza.confirm') }}" enctype="multipart/form-data" novalidate>
+            <form class="row g-3" method="POST" action="{{ route('pedidos.confirm') }}" novalidate>
                 @csrf
                 <div class="col-12">
                     <label for="name" class="form-label">{{ __('Confirm your name') }}</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="{{ $user->name }}">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="{{ $user->name }}">
                     @error('name')
                         <span class="invalid-feedback d-block" role="alert">
                             <strong>{{$message}}</strong>
@@ -17,24 +17,40 @@
                 </div>
                 <div class="col-md-6">
                     <label for="email" class="form-label">{{ __('Confirm your Email Address') }}</label>
-                    <input type="email" class="form-control" id="email" placeholder="{{ $user->email }}">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="{{ $user->email }}">
+                    @error('email')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
                 </div>
                 <div class="col-12">
                     <label for="address" class="form-label">{{ __('Address') }}</label>
-                    <input type="text" class="form-control" id="address"
+                    <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address"
                         placeholder="{{ __('Main Street #12 Sate California C.P. 00000') }}">
+                        @error('address')
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{$message}}</strong>
+                            </span>
+                        @enderror
                 </div>
+
                 @foreach ($pizzas as $pizza)
                     <div class="col-md-4">
                         <label for="{{ $pizza->name }}" class="form-label">{{ $pizza->name }} </label>
-                        <select id="$pizza->name " class="form-select">
-                            <option selected>{{ __('Quantity...') }}</option>
+                        <select id="{{ $pizza->name }}" name="{{ $pizza->name }}" class="form-select @error("{{ $pizza->name }}") is-invalid @enderror">
+                            <option selected value="0">{{ __('Quantity...') }}</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="4">5</option>
                         </select>
+                        @error("{{ $pizza->name }}")
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{$message}}</strong>
+                            </span>
+                        @enderror
                     </div>
                 @endforeach
 

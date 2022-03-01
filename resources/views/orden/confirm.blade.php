@@ -1,7 +1,1 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    confirmar
-</div>
-@endsection
+confirmar
