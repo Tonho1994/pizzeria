@@ -1,7 +1,4 @@
 @extends('layouts.app')
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script>
     function submitCreateForm(){
         event.preventDefault();
@@ -17,14 +14,12 @@
             contentType: false,
             dataType: 'json'
         }).done(function (response) {
-            Swal.fire('Exito!',data.responseText,'success');
-/*             location.href='/' */
-            setTimeout("location.href='/'",3000)
+            Swal.fire('Exito!',response,'success');
+            setTimeout("location.href='/'",2000)
         }).fail(function(data) {
-            Swal.fire('¡Upss!',data.responseText,'warning');
+            Swal.fire('¡Upss!',data,'warning');
         });
     }
-
 </script>
 @section('content')
 <div class="container">
@@ -46,9 +41,6 @@
                 </div>
                 <input id="quantity" name="quantity" type="hidden" value="{{ $total }}">
                 <input id="total" name="total" type="hidden" value="{{ ($total*.21)+$total}}">
-                {{-- @foreach ($pizzas as $pizza)
-                {{ $pizza->name }}
-            @endforeach --}}
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -70,14 +62,12 @@
                             @elseif ('Margarita'==$pizza->name)
                                 {{ $data['Margarita'] }}
                             @else
-
                             @endif
                         </th>
                         <td>{{ $pizza->name }}</td>
                         <td>{{ $pizza->price }}</td>
                     </tr>
                     @endforeach
-
                     <tr>
                         <th scope="row" colspan="2">Total</th>
                         <td>{{ $total }}</td>

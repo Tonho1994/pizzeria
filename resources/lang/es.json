@@ -39,5 +39,8 @@
     "Main Street #12 Sate California C.P. 00000":"Calle principal # 12 CDMX Alcaldia Iztacalco C.P.00000",
     "Confirm purchase":"Confirmar Compra",
     "Price":"Precio",
-    "Quantity":"Cantidad"
+    "Quantity":"Cantidad",
+    "Date":"Fecha",
+    "Orders":"Ordenes",
+    "Should order at least one pizza":"Debe seleccionar 1 pizza al menos"
 }

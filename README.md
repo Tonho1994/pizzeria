@@ -5,6 +5,14 @@ De igual manera les comparto el enlace al repositorio para que vean la versión 
 https://github.com/Tonho1994/pizzeria.git
 
 ---------IMPORTANTE:
+
+composer install
+npm install
+php artisan migrate
+php artisan migrate --seed
+php artisan key:generate
+php artisan serve
+
 Se debe descomentar el archivo app/providers/AppServiceProvider en:
 - linea 5 (use App\Models\Pizza;)
 - linea 29 (View::share('pizzas', Pizza::all());)

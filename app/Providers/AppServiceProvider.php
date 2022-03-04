@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //to pass to all views (specifically the navbar) all the pizzas
         //View::share('pizzas', Pizza::all());
     }
 }

@@ -34,20 +34,25 @@
                             </span>
                         @enderror
                 </div>
-
+                @if ($errors->has('seleccion'))
+                    <div class="col-12">
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{__($errors->first('seleccion'))}}</strong>
+                        </span>
+                    </div>
+                @endif
                 @foreach ($pizzas as $pizza)
-                    <div class="col-md-4">
+                    <div class="col">
                         <label for="{{ $pizza->name }}" class="form-label">{{ $pizza->name }} </label>
-                        <select id="{{ $pizza->name }}" name="{{ $pizza->name }}" class="form-select @error("{{ $pizza->name }}") is-invalid @enderror">
-                            <option selected value="">{{ __('Quantity...') }}</option>
-                            <option value="0">0</option>
+                        <select id="{{ $pizza->name }}" name="{{ $pizza->name }}" class="form-select @error($pizza->name) is-invalid @enderror">
+                            <option value="0">{{ __('Quantity...') }}</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
-                            <option value="4">5</option>
+                            <option value="5">5</option>
                         </select>
-                        @error("{{ $pizza->name }}")
+                        @error($pizza->name)
                             <span class="invalid-feedback d-block" role="alert">
                                 <strong>{{$message}}</strong>
                             </span>
